@@ -8,16 +8,15 @@ let pScore = document.querySelector(".score");
 let pHighScore = document.querySelector(".highscore");
 let score = 0;
 let highscore = 100;
-console.log(randomInteger);
 
 
 function tryAgain(){
     score = 0;
     pScore.innerHTML = "0"
     randomInteger = Math.floor(Math.random() * 100);
-    console.log(randomInteger);
     document.body.style.backgroundColor = "#222";
     number.innerHTML = "?";
+    p.innerHTML = "Start guessing..."
 }
 function checkUserInput(){
     if(guess.value > 100 || guess.value < 1){
@@ -27,16 +26,16 @@ function checkUserInput(){
 function checkInputHightOrLow(){
     if(guess.value > randomInteger){
         score++;
-        p.innerHTML = "  To High!"
+        p.innerHTML = " 📈 To High!"
         pScore.innerHTML = score;
     }if(guess.value < randomInteger){
         score++;
-        p.innerHTML = "To Low!"
+        p.innerHTML = " 📉 To Low!"
         pScore.innerHTML = score;
     }if(guess.value == randomInteger){
         score++;
         pScore.innerHTML = score;
-        p.innerHTML = "Correct number!"
+        p.innerHTML = " 🎉 Correct number!"
         document.body.style.backgroundColor = "#60b347";
         checkHighScore();
         number.innerHTML = randomInteger;
@@ -44,6 +43,7 @@ function checkInputHightOrLow(){
 }
 function checkHighScore(){
     if(score < highscore){
+        highscore = score;
         pHighScore.innerHTML = score;
     }
 }
